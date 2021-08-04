@@ -1,0 +1,152 @@
+# Build workflow does the following:
+#   - checkout all files
+#   - get the latest version number
+#   - setup python 3.x env
+#   - install python dependencies
+#   - run trex docker container
+#   - build python distribution
+#   - run unit tests
+#   - create a tag and release
+#   - upload assets to the release
+#   - upload assets to pypi
+
+name: Build
+
+on: [push, pull_request, workflow_dispatch, repository_dispatch]
+
+jobs:
+  build_test_upload:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.get_version.outputs.version }}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: |
+        pip install --upgrade -r requirements.txt
+        
+    - name: Build snappi_trex docker image
+      run: |
+        sudo docker build --network=host docker -t snappi-trex
+        
+    - name: Run snappi_trex docker container
+      run: |
+        sudo docker run --rm -t --privileged --cap-add=ALL -p 4500:4500 -p 4501:4501 -p 4507:4507 snappi-trex &
+
+    - name: Download T-Rex
+      run: |
+        mkdir /opt/trex |
+        wget -P /opt/trex --no-cache https://trex-tgn.cisco.com/trex/release/v2.90.tar.gz --no-check-certificate
+    
+    - name: Extract T-rex
+      run: |
+        tar -xzvf /opt/trex/v2.90.tar.gz -C /opt/trex
+
+    # - name: Build distributions Python2
+    #   run: |
+    #     python2 setup.py sdist --formats=gztar bdist_wheel --universal
+      
+    - name: Build distributions Python3
+      run: |
+        python3 setup.py sdist --formats=gztar bdist_wheel --universal
+
+    - name: Get VERSION number
+      id: get_version
+      run: echo "::set-output name=version::$(cat VERSION)"
+    
+    - name: Test whl distribution installation
+      run: |
+        pip install --upgrade dist/snappi_trex-${{ steps.get_version.outputs.version }}-py2.py3-none-any.whl[dev]
+
+    - name: Run tests
+      run: |
+        python3 -m pytest tests
+
+    - name: Get all changes
+      id: file_changes
+      uses: jitterbit/get-changed-files@v1
+      with:
+          format: 'json'
+
+    - name: Output changed files
+      id: changed_files
+      run: echo ${{steps.file_changes.outputs.modified}}
+
+    - name: Create Release
+      if: true == contains(steps.file_changes.outputs.modified, 'VERSION')
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+      with:
+        tag_name: v${{ steps.get_version.outputs.version }}
+        release_name: Release ${{ steps.get_version.outputs.version  }}
+        draft: false
+        prerelease: false
+
+    - name: Upload Assets To Release
+      if: true == contains(steps.file_changes.outputs.modified, 'VERSION')
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: dist/*
+        tag: v${{ steps.get_version.outputs.version }}
+        overwrite: true
+        file_glob: true   
+
+    - name: Upload Assets to Pypi
+      if: true == contains(steps.file_changes.outputs.modified, 'VERSION')
+      env:
+        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+      run: |
+        python -m twine upload dist/snappi_trex-${{ steps.get_version.outputs.version  }}-py2.py3-none-any.whl
+        python -m twine upload dist/snappi_trex-${{ steps.get_version.outputs.version  }}.tar.gz
+
+
+  end_to_end_test:
+    needs: build_test_upload
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: |
+        pip install --upgrade -r requirements.txt
+        
+    - name: Build snappi_trex docker image
+      run: |
+        sudo docker build --network=host docker -t snappi-trex
+        
+    - name: Run snappi_trex docker container
+      run: |
+        sudo docker run --rm -t --privileged --cap-add=ALL -p 4500:4500 -p 4501:4501 -p 4507:4507 snappi-trex &
+
+    - name: Download T-Rex
+      run: |
+        mkdir /opt/trex |
+        wget -P /opt/trex --no-cache https://trex-tgn.cisco.com/trex/release/v2.90.tar.gz --no-check-certificate
+    
+    - name: Extract T-rex
+      run: |
+        tar -xzvf /opt/trex/v2.90.tar.gz -C /opt/trex
+
+    - name: Remove snappi_trex directory
+      run: |
+        rm -r snappi_trex
+
+    - name: Install snappi_trex from Pypi
+      run: |
+        pip install snappi_trex
+
+    - name: Install Pytest
+      run: |
+        pip install pytest
+    
+    - name: Run tests
+      run: |
+        python3 -m pytest -v

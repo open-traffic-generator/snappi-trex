@@ -1,0 +1,74 @@
+[
+    {
+        "choice": "invalidstr",
+        "fixed_packets": {"packets": 1000},
+        "fixed_seconds": {"seconds": 234.5},
+        "burst": {"bursts": 10, "packets": 100, "inter_burst_gap":{
+            "choice": "invalidstr", "nanoseconds": 96.8, "microseconds": 0.0968
+        }},
+        "continuous": {}
+    },
+    {
+        "choice": "fixed_packets",
+        "fixed_packets": {"packets": 1000.5},
+        "fixed_seconds": {"seconds": 234.5},
+        "burst": {"bursts": 10, "packets": 100, "inter_burst_gap":{
+            "choice": "invalidstr", "nanoseconds": 96.8, "microseconds": 0.0968
+        }},
+        "continuous": {}
+    },
+    {
+        "choice": "fixed_seconds",
+        "fixed_packets": {"packets": 1000.5},
+        "fixed_seconds": {"seconds": 234.5},
+        "burst": {"bursts": 10, "packets": 100, "inter_burst_gap":{
+            "choice": "invalidstr", "nanoseconds": 96.8, "microseconds": 0.0968
+        }},
+        "continuous": {}
+    },
+    {
+        "choice": "burst",
+        "fixed_packets": {"packets": 1000.5},
+        "fixed_seconds": {"seconds": 234.5},
+        "burst": {"bursts": 10.5, "packets": 100, "inter_burst_gap":{
+            "choice": "invalidstr", "nanoseconds": 96.8, "microseconds": 0.0968
+        }},
+        "continuous": {}
+    },
+    {
+        "choice": "burst",
+        "fixed_packets": {"packets": 1000.5},
+        "fixed_seconds": {"seconds": 234.5},
+        "burst": {"bursts": 10, "packets": 100.5, "inter_burst_gap":{
+            "choice": "invalidstr", "nanoseconds": 96.8, "microseconds": 0.0968
+        }},
+        "continuous": {}
+    },
+    {
+        "choice": "burst",
+        "fixed_packets": {"packets": 1000.5},
+        "fixed_seconds": {"seconds": 234.5},
+        "burst": {"bursts": 10, "packets": 100, "inter_burst_gap":{
+            "choice": "invalidstr", "nanoseconds": 96.8, "microseconds": 0.0968
+        }},
+        "continuous": {}
+    },
+    {
+        "choice": "burst",
+        "fixed_packets": {"packets": 1000.5},
+        "fixed_seconds": {"seconds": 234.5},
+        "burst": {"bursts": 10, "packets": 100, "inter_burst_gap":{
+            "choice": "nanoseconds", "nanoseconds": "96.8", "microseconds": 0.0968
+        }},
+        "continuous": {}
+    },
+    {
+        "choice": "burst",
+        "fixed_packets": {"packets": 1000.5},
+        "fixed_seconds": {"seconds": 234.5},
+        "burst": {"bursts": 10, "packets": 100, "inter_burst_gap":{
+            "choice": "microseconds", "nanoseconds": "96.8", "microseconds": "0.0968"
+        }},
+        "continuous": {}
+    }
+]

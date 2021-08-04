@@ -1,0 +1,46 @@
+[
+    [
+        {
+            "ethernet":{
+                "dst": {
+                    "choice": "values",
+                    "values": ["AA:BB:CC:DD:EE:FF", "01:00:00:00:00:00", 500, 281474976710655]
+                }
+            },
+            "choice": "ethernet"
+        }
+    ],
+    [
+        {
+            "ethernet":{
+                "dst": {
+                    "choice": "increment",
+                    "increment": {"start": "AA:BB:CC:DD:EE:FF", "step": "01:00:00:00:00:00", "count": 255}
+                }
+            },
+            "choice": "ethernet"
+        }
+    ],
+    [
+        {
+            "ethernet":{
+                "dst": {
+                    "choice": "decrement",
+                    "decrement": {"start": "AA:BB:CC:DD:EE:FF", "step": "01:00:00:00:00:00", "count": 255}
+                }
+            },
+            "choice": "ethernet"
+        }
+    ],
+    [
+        {
+            "ethernet":{
+                "dst": {
+                    "choice": "decrement",
+                    "decrement": {"start": 10, "step": 1, "count": 100}
+                }
+            },
+            "choice": "ethernet"
+        }
+    ]
+]

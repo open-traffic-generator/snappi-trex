@@ -1,0 +1,57 @@
+[
+    {
+        "test": {
+            "choice": "pps",
+            "pps": 1000,
+            "bps": 8000,
+            "mbps": 1,
+            "gbps": 1,
+            "percentage": 1
+        },
+        "res": [1000, null, null]
+    },
+    {
+        "test": {
+            "choice": "bps",
+            "pps": 1000,
+            "bps": 8000,
+            "mbps": 1,
+            "gbps": 1,
+            "percentage": 1
+        },
+        "res": [null, 8000, null]
+    },
+    {
+        "test": {
+            "choice": "mbps",
+            "pps": 1000,
+            "bps": 8000,
+            "mbps": 1,
+            "gbps": 1,
+            "percentage": 1
+        },
+        "res": [null, 1000000, null]
+    },
+    {
+        "test": {
+            "choice": "gbps",
+            "pps": 1000,
+            "bps": 8000,
+            "mbps": 1,
+            "gbps": 1,
+            "percentage": 1
+        },
+        "res": [null, 1000000000, null]
+    },
+    {
+        "test": {
+            "choice": "percentage",
+            "pps": 1000,
+            "bps": 8000,
+            "mbps": 1,
+            "gbps": 1,
+            "percentage": 1
+        },
+        "res": [null, null, 1]
+    }
+]

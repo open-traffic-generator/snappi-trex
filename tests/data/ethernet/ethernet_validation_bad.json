@@ -1,0 +1,68 @@
+[
+    [
+        {
+            "ethernet":{
+                "dst": {
+                    "choice": "invalid string",
+                    "increment": {"start": "AA:BB:CC:DD:EE:FG", "step": "00:11:00:22:00:33", "count": 200}
+                }
+            },
+            "choice": "ethernet"
+        }
+    ],
+    [
+        {
+            "ethernet":{
+                "dst": {
+                    "choice": "increment",
+                    "increment": {"start": "AA:BB:CC:DD:EE:FG", "step": "00:11:00:22:00:33", "count": 200}
+                }
+            },
+            "choice": "ethernet"
+        }
+    ],
+    [
+        {
+            "ethernet":{
+                "dst": {
+                    "choice": "decrement",
+                    "decrement": {"start": "AA:BB:CC:DD:EE:FF", "step": "00:1j:00:22:00:33", "count": 200}
+                }
+            },
+            "choice": "ethernet"
+        }
+    ],
+    [
+        {
+            "ethernet":{
+                "dst": {
+                    "choice": "decrement",
+                    "decrement": {"start": "AA:BB:CC:DD:EE:FF", "step": "01:00:00:00:00:00", "count": 256}
+                }
+            },
+            "choice": "ethernet"
+        }
+    ],
+    [
+        {
+            "ethernet":{
+                "dst": {
+                    "choice": "increment",
+                    "increment": {"start": "AA:BB:CC:DD:EE:FF", "step": "01:00:00:00:00:00", "count": 256}
+                }
+            },
+            "choice": "ethernet"
+        }
+    ],
+    [
+        {
+            "ethernet":{
+                "dst": {
+                    "choice": "values",
+                    "values": ["AA:BB:CC:DD:EE:Fr", "01:00:00:00:00:00", 500, 281474976710655]
+                }
+            },
+            "choice": "ethernet"
+        }
+    ]
+]

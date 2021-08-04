@@ -1,0 +1,248 @@
+[
+  {
+    "res": "tests/data/pcap/gre/gre1_p2.pcap",
+    "test": {
+      "ports": [
+        {
+          "location": "localhost:5555",
+          "name": "p1"
+        },
+        {
+          "location": "localhost:5556",
+          "name": "p2"
+        }
+      ],
+      "layer1": [
+        {
+          "port_names": [
+            "p1",
+            "p2"
+          ],
+          "speed": "speed_1_gbps",
+          "media": null,
+          "promiscuous": true,
+          "mtu": 1500,
+          "ieee_media_defaults": true,
+          "auto_negotiate": true,
+          "name": "ly"
+        }
+      ],
+      "captures": [
+        {
+          "port_names": [
+            "p1",
+            "p2"
+          ],
+          "overwrite": false,
+          "packet_size": null,
+          "format": "pcap",
+          "name": "cp"
+        }
+      ],
+      "flows": [
+        {
+          "name": "flow p1->p2",
+          "tx_rx": {
+            "port": {
+              "tx_name": "p1",
+              "rx_name": "p2"
+            },
+            "choice": "port"
+          },
+          "size": {
+            "fixed": 1024,
+            "choice": "fixed"
+          },
+          "duration": {
+            "fixed_packets": {
+              "packets": 1000,
+              "gap": null
+            },
+            "choice": "fixed_packets"
+          },
+          "rate": {
+            "pps": 1000,
+            "choice": "pps"
+          },
+          "packet": [
+            {
+              "ethernet": {
+                "src": {
+                  "metric_group": null,
+                  "increment": {
+                    "start": "10:AA:BB:CC:DD:EE",
+                    "step": "00:00:00:00:00:02",
+                    "count": 1000
+                  },
+                  "choice": "increment"
+                },
+                "dst": {
+                  "metric_group": null,
+                  "decrement": {
+                    "start": "10:AA:00:00:04:00",
+                    "step": "00:00:00:00:00:04",
+                    "count": 1000
+                  },
+                  "choice": "decrement"
+                }
+              },
+              "choice": "ethernet"
+            },
+            {
+              "ipv4": {},
+              "choice": "ipv4"
+            },
+            {
+              "gre": {
+                "version": {
+                  "metric_group": null,
+                  "increment": {
+                    "start": 5,
+                    "step": 1,
+                    "count": 7
+                  },
+                  "choice": "increment"
+                },
+                "reserved0": {
+                  "metric_group": null,
+                  "values": [
+                    4000,
+                    1045,
+                    2034,
+                    1021,
+                    6
+                  ],
+                  "choice": "values"
+                },
+                "protocol": {
+                  "metric_group": null,
+                  "decrement": {
+                    "start": 60000,
+                    "step": 53,
+                    "count": 1000
+                  },
+                  "choice": "decrement"
+                }
+              },
+              "choice": "gre"
+            }
+          ]
+        },
+        {
+          "name": "flow p2->p1",
+          "tx_rx": {
+            "port": {
+              "tx_name": "p2",
+              "rx_name": "p1"
+            },
+            "choice": "port"
+          },
+          "size": {
+            "fixed": 512,
+            "choice": "fixed"
+          },
+          "duration": {
+            "fixed_packets": {
+              "packets": 1000,
+              "gap": null
+            },
+            "choice": "fixed_packets"
+          },
+          "rate": {
+            "pps": 1000,
+            "choice": "pps"
+          },
+          "packet": [
+            {
+              "ethernet": {
+                "src": {
+                  "metric_group": null,
+                  "value": "00:AA:00:00:00:AA",
+                  "choice": "values",
+                  "values": [
+                    "11:22:33:44:55:66",
+                    "22:22:22:22:22:22"
+                  ]
+                },
+                "dst": {
+                  "metric_group": null,
+                  "value": "12:34:56:78:9A:BC",
+                  "choice": "value"
+                }
+              },
+              "choice": "ethernet"
+            },
+            {
+              "ipv4": {
+                "src": {
+                  "metric_group": null,
+                  "value": "10.0.0.2",
+                  "choice": "value"
+                },
+                "dst": {
+                  "metric_group": null,
+                  "value": "10.0.0.1",
+                  "choice": "value"
+                }
+              },
+              "choice": "ipv4"
+            },
+            {
+              "ipv4": {
+                "src": {
+                  "metric_group": null,
+                  "value": "10.0.0.3",
+                  "choice": "value"
+                },
+                "dst": {
+                  "metric_group": null,
+                  "value": "10.0.0.4",
+                  "choice": "value"
+                }
+              },
+              "choice": "ipv4"
+            },
+            {
+              "udp": {
+                "src_port": {
+                  "metric_group": null,
+                  "decrement": {
+                    "start": 5000,
+                    "step": 1,
+                    "count": 1000
+                  },
+                  "choice": "decrement"
+                },
+                "dst_port": {
+                  "metric_group": null,
+                  "increment": {
+                    "start": 5000,
+                    "step": 1,
+                    "count": 1000
+                  },
+                  "choice": "increment"
+                }
+              },
+              "choice": "udp"
+            },
+            {
+              "udp": {
+                "src_port": {
+                  "metric_group": null,
+                  "value": 5002,
+                  "choice": "value"
+                },
+                "dst_port": {
+                  "metric_group": null,
+                  "value": 5002,
+                  "choice": "value"
+                }
+              },
+              "choice": "udp"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

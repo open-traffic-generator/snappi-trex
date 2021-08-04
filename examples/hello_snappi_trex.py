@@ -1,85 +1,11 @@
-# snappi-trex
-snappi-trex is a snappi plugin that allows executing scripts written using 
-[snappi](https://github.com/open-traffic-generator/snappi) with Cisco's [TRex Traffic Generator](https://trex-tgn.cisco.com)
-
-## Design
-snappi-trex converts snappi Open Traffic Generator API configuration into the equivalent TRex STL Client configuration. This allows users to use the TRex Traffic Generator and its useful features without having to write complex TRex scripts. 
-
-![diagram](docs/res/snappi-trex-design.svg)
-
-The above diagram outlines the overall process of how the snappi Open Traffic Generator API is able to interface with TRex and generate traffic over its network interfaces. snappi-trex is essential to convert snappi scripts into the equivalent TRex STL Client instructions.
-
-<br>
-
-snappi-trex usage follows the standard usage of snappi with a few modifications outlined in the [Usage](docs/usage.md) document.
-
-
-## Demos
-
-### [Click here for the Quickstart Guide Video Tutorial](https://youtube.com/watch?v=ti8lWKhWCLE)
-* This goes over the installation and setup for snappi-trex, and how to run a basic snappi script using snappi-trex
-
-### [Click here for the snappi-trex P4 PTF Demo](https://youtube.com/watch?v=apnCB2lg6VY)
-* This demonstrates snappi-trex being used with the P4 Packet Testing Framework in a 4 Port Mesh configuration
-
-<br>
-
-# Table of Contents
-* [Quickstart](docs/quickstart.md)
-* [TRex installation and setup](docs/trex-tutorial.md)
-* [snappi-trex usage](docs/usage.md)
-* [snappi-trex full features and limitations](docs/features.md)
-* [Testing](docs/testing.md)
-* [Contribute](docs/contribute.md)
-* [Demos](docs/demos.md)
-
-<br>
-
-# Quickstart
-snappi-trex is a snappi plugin that allows executing scripts written using 
-[snappi](https://github.com/open-traffic-generator/snappi) with Cisco's [TRex Traffic Generator](https://trex-tgn.cisco.com)
-
-<br>
-
-## [--> Click here for the Quickstart Guide Video Tutorial](https://youtube.com/watch?v=ti8lWKhWCLE)
-<br>
-
-## Installing and Running TRex
-### [TRex must be installed and running before proceeding](docs/trex-tutorial.md)
-TRex must be installed and configured in order to use snappi-trex. For a quick tutorial on TRex installation, running, and basic usage, check out my [TRex Tutorial](docs/trex-tutorial.md)
-
-<br>
-
-## Installing snappi-trex
-Make sure python-pip3 is installed
-```sh
-sudo apt-get install python3-pip
-```
-Install snappi and the snappi-trex extension
-```sh
-pip3 install snappi==0.4.26 snappi[trex]
-```
-
-## Start Scripting
-Let's run our first script called `hello_snappi_trex.py`: A basic snappi script that transmits 1000 UDP packets bidirectionally between two ports and verifies that they are received. This file can be found at `examples/hello_snappi_trex.py` in the snappi-trex Github Repo.
-```sh
-git clone https://github.com/open-traffic-generator/snappi-trex
-python3 snappi-trex/examples/hello_snappi_trex.py
-```
-
-<br>
-
-You may also just paste the script in from below.
-<details>
-<summary>hello_snappi_trex.py</summary>
-
-```
 import snappi
 import sys, os
 
-# Replace v2.90 with the installed version of TRex. 
 # Change '/opt/trex' if you installed TRex in another location
-trex_path = '/opt/trex/v2.90/automation/trex_control_plane/interactive'
+install_path = '/opt/trex/'
+# Gets the most recent version of TRex installed
+trex_version = max(os.listdir(install_path)) if len(os.listdir(install_path))>0 else ""
+trex_path = '{0}{1}/automation/trex_control_plane/interactive'.format(install_path, trex_version)
 sys.path.insert(0, os.path.abspath(trex_path))
 
 
@@ -237,30 +163,3 @@ def wait_for(func, timeout=10, interval=0.2):
 
 if __name__ == '__main__':
     hello_snappi_trex()
-
-```
-</details>
-
-<br>
-
-### Output
-
-If everything is working correctly, you should see a similar output as this.
-```
-Pushing traffic configuration ...
-Starting packet capture on all configured ports ...
-Starting transmit on all configured flows ...
-Checking metrics on all configured ports ...
-Expected        Total Tx        Total Rx
-2000            19              17
-2000            445             437
-2000            881             881
-2000            1325            1325
-2000            1761            1761
-2000           2000            2000
-Checking captured packets on all configured ports ...
-Port Name       Expected        UDP packets
-p1              1000            1000
-p2              1000            1000
-Test passed !
-```

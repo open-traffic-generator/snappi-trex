@@ -1,0 +1,48 @@
+[
+    {
+        "test": {
+            "choice": "fixed_packets",
+            "fixed_packets": {"packets": 2000, "gap": 10},
+            "burst": {"bursts": 10, "packets": 100, "gap": 128, "inter_burst_gap":{"choice": "nanoseconds", "nanoseconds": 100}}
+        },
+        "res": {
+            "type": "single_burst",
+            "total_pkts": 2000,
+            "rate": {
+                "type": "pps", 
+                "value": 1000
+            }
+        }
+    },
+    {
+        "test": {
+            "choice": "burst",
+            "fixed_packets": {"packets": 2000, "gap": 10},
+            "burst": {"bursts": 10, "packets": 100, "gap": 128, "inter_burst_gap":{"choice": "nanoseconds", "nanoseconds": 200}}
+        },
+        "res": {
+            "type": "multi_burst",
+            "pkts_per_burst": 100,
+            "ibg": 200,
+            "count": 10,
+            "rate": {
+                "type": "pps", 
+                "value": 1000
+            }
+        }
+    },
+    {
+        "test": {
+            "choice": "continuous",
+            "fixed_packets": {"packets": 2000, "gap": 10},
+            "burst": {"bursts": 10, "packets": 100, "gap": 128, "inter_burst_gap":{"choice": "nanoseconds", "nanoseconds": 200}}
+        },
+        "res": {
+            "type": "continuous",
+            "rate": {
+                "type": "pps", 
+                "value": 1000
+            }
+        }
+    }
+]

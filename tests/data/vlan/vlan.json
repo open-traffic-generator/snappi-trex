@@ -1,0 +1,163 @@
+[
+  {
+    "res": "tests/data/pcap/vlan/vlan1_p2.pcap",
+    "test": {
+      "ports": [
+        {
+          "location": "localhost:5555",
+          "name": "p1"
+        },
+        {
+          "location": "localhost:5556",
+          "name": "p2"
+        }
+      ],
+      "layer1": [
+        {
+          "port_names": [
+            "p1",
+            "p2"
+          ],
+          "speed": "speed_1_gbps",
+          "media": null,
+          "promiscuous": true,
+          "mtu": 1500,
+          "ieee_media_defaults": true,
+          "auto_negotiate": true,
+          "name": "ly"
+        }
+      ],
+      "captures": [
+        {
+          "port_names": [
+            "p1",
+            "p2"
+          ],
+          "overwrite": false,
+          "packet_size": null,
+          "format": "pcap",
+          "name": "cp"
+        }
+      ],
+      "flows": [
+        {
+          "name": "flow p1->p2",
+          "tx_rx": {
+            "port": {
+              "tx_name": "p1",
+              "rx_name": "p2"
+            },
+            "choice": "port"
+          },
+          "size": {
+            "fixed": 128,
+            "choice": "fixed"
+          },
+          "duration": {
+            "fixed_packets": {
+              "packets": 1000,
+              "gap": null
+            },
+            "choice": "fixed_packets"
+          },
+          "rate": {
+            "pps": 1000,
+            "choice": "pps"
+          },
+          "packet": [
+            {
+              "ethernet": {
+                "src": {
+                  "metric_group": null,
+                  "increment": {
+                    "start": "10:AA:BB:CC:DD:EE",
+                    "step": "00:00:00:00:00:02",
+                    "count": 1000
+                  },
+                  "choice": "increment"
+                },
+                "dst": {
+                  "metric_group": null,
+                  "decrement": {
+                    "start": "10:AA:00:00:04:00",
+                    "step": "00:00:00:00:00:04",
+                    "count": 1000
+                  },
+                  "choice": "decrement"
+                }
+              },
+              "choice": "ethernet"
+            },
+            {
+              "vlan": {
+                "tpid": {
+                  "metric_group": null,
+                  "increment": {
+                    "start": 60000,
+                    "step": 128,
+                    "count": 511
+                  },
+                  "choice": "increment"
+                },
+                "cfi": {
+                  "metric_group": null,
+                  "values": [
+                    1,
+                    0
+                  ],
+                  "choice": "values"
+                },
+                "priority": {
+                  "metric_group": null,
+                  "decrement": {
+                    "start": 4,
+                    "step": 1,
+                    "count": 7
+                  },
+                  "choice": "decrement"
+                },
+                "id": {
+                  "metric_group": null,
+                  "decrement": {
+                    "start": 2000,
+                    "step": 8,
+                    "count": 511
+                  },
+                  "choice": "decrement"
+                }
+              },
+              "choice": "vlan"
+            },
+            {
+              "ipv4": {
+                "src": {
+                  "metric_group": null,
+                  "increment": {
+                    "start": "11.0.0.1",
+                    "step": "0.0.0.2",
+                    "count": 1000
+                  },
+                  "choice": "increment"
+                },
+                "dst": {
+                  "metric_group": null,
+                  "decrement": {
+                    "start": "12.0.0.0",
+                    "step": "0.0.0.4",
+                    "count": 1000
+                  },
+                  "choice": "decrement"
+                }
+              },
+              "choice": "ipv4"
+            },
+            {
+              "udp": {},
+              "choice": "udp"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

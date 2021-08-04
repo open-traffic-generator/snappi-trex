@@ -1,98 +1,28 @@
-# snappi-trex
-snappi-trex is a snappi plugin that allows executing scripts written using 
-[snappi](https://github.com/open-traffic-generator/snappi) with Cisco's [TRex Traffic Generator](https://trex-tgn.cisco.com)
-
-## Design
-snappi-trex converts snappi Open Traffic Generator API configuration into the equivalent TRex STL Client configuration. This allows users to use the TRex Traffic Generator and its useful features without having to write complex TRex scripts. 
-
-![diagram](docs/res/snappi-trex-design.svg)
-
-The above diagram outlines the overall process of how the snappi Open Traffic Generator API is able to interface with TRex and generate traffic over its network interfaces. snappi-trex is essential to convert snappi scripts into the equivalent TRex STL Client instructions.
-
-<br>
-
-snappi-trex usage follows the standard usage of snappi with a few modifications outlined in the [Usage](docs/usage.md) document.
-
-
-## Demos
-
-### [Click here for the Quickstart Guide Video Tutorial](https://youtube.com/watch?v=ti8lWKhWCLE)
-* This goes over the installation and setup for snappi-trex, and how to run a basic snappi script using snappi-trex
-
-### [Click here for the snappi-trex P4 PTF Demo](https://youtube.com/watch?v=apnCB2lg6VY)
-* This demonstrates snappi-trex being used with the P4 Packet Testing Framework in a 4 Port Mesh configuration
-
-<br>
-
-# Table of Contents
-* [Quickstart](docs/quickstart.md)
-* [TRex installation and setup](docs/trex-tutorial.md)
-* [snappi-trex usage](docs/usage.md)
-* [snappi-trex full features and limitations](docs/features.md)
-* [Testing](docs/testing.md)
-* [Contribute](docs/contribute.md)
-* [Demos](docs/demos.md)
-
-<br>
-
-# Quickstart
-snappi-trex is a snappi plugin that allows executing scripts written using 
-[snappi](https://github.com/open-traffic-generator/snappi) with Cisco's [TRex Traffic Generator](https://trex-tgn.cisco.com)
-
-<br>
-
-## [--> Click here for the Quickstart Guide Video Tutorial](https://youtube.com/watch?v=ti8lWKhWCLE)
-<br>
-
-## Installing and Running TRex
-### [TRex must be installed and running before proceeding](docs/trex-tutorial.md)
-TRex must be installed and configured in order to use snappi-trex. For a quick tutorial on TRex installation, running, and basic usage, check out my [TRex Tutorial](docs/trex-tutorial.md)
-
-<br>
-
-## Installing snappi-trex
-Make sure python-pip3 is installed
-```sh
-sudo apt-get install python3-pip
-```
-Install snappi and the snappi-trex extension
-```sh
-pip3 install snappi==0.4.26 snappi[trex]
-```
-
-## Start Scripting
-Let's run our first script called `hello_snappi_trex.py`: A basic snappi script that transmits 1000 UDP packets bidirectionally between two ports and verifies that they are received. This file can be found at `examples/hello_snappi_trex.py` in the snappi-trex Github Repo.
-```sh
-git clone https://github.com/open-traffic-generator/snappi-trex
-python3 snappi-trex/examples/hello_snappi_trex.py
-```
-
-<br>
-
-You may also just paste the script in from below.
-<details>
-<summary>hello_snappi_trex.py</summary>
-
-```
-import snappi
 import sys, os
+import dotenv
 
-# Replace v2.90 with the installed version of TRex. 
-# Change '/opt/trex' if you installed TRex in another location
-trex_path = '/opt/trex/v2.90/automation/trex_control_plane/interactive'
-sys.path.insert(0, os.path.abspath(trex_path))
+dotenv.load_dotenv()
+
+TREX_PATH = os.getenv('TREXPATH')
+sys.path.insert(0, os.path.abspath(TREX_PATH))
+
+import snappi
+
+sys.path.insert(0, os.path.abspath('.'))
 
 
-def hello_snappi_trex():
+def hello_snappi():
     """
     This script does following:
     - Send 1000 packets back and forth between the two ports at a rate of
       1000 packets per second.
     - Validate that total packets sent and received on both interfaces is as
       expected using port metrics.
+    - Capture packets into tests/data/pcap/capture_example.pcap
     - Validate that captured UDP packets on both the ports are as expected.
     """
     # create a new API instance where host points to controller
+    # api = snappi_trex.snappi_api.Api() # Use local copy of snappi_trex
     api = snappi.api(ext='trex')
     # and an empty traffic configuration to be pushed to controller later on
     cfg = api.config()
@@ -100,8 +30,8 @@ def hello_snappi_trex():
     # add two ports where location points to traffic-engine (aka ports)
     p1, p2 = (
         cfg.ports
-        .port(name='p1')
-        .port(name='p2')
+        .port(name='p1', location='localhost:5555')
+        .port(name='p2', location='localhost:5556')
     )
 
     # add layer 1 property to configure same speed on both ports
@@ -141,12 +71,12 @@ def hello_snappi_trex():
 
     # set incrementing port numbers as source UDP ports
     udp1.src_port.increment.start = 5000
-    udp1.src_port.increment.step = 2
-    udp1.src_port.increment.count = 10
+    udp1.src_port.increment.step = 1
+    udp1.src_port.increment.count = 1000
 
-    udp2.src_port.increment.start = 6000
-    udp2.src_port.increment.step = 4
-    udp2.src_port.increment.count = 10
+    udp2.src_port.decrement.start = 6000
+    udp2.src_port.decrement.step = 4
+    udp2.src_port.decrement.count = 1000
 
     # assign list of port numbers as destination UDP ports
     udp1.dst_port.values = [4000, 4044, 4060, 4074]
@@ -167,7 +97,17 @@ def hello_snappi_trex():
 
     print('Checking metrics on all configured ports ...')
     print('Expected\tTotal Tx\tTotal Rx')
+
     assert wait_for(lambda: metrics_ok(api, cfg)), 'Metrics validation failed!'
+
+
+    print('capturing...')
+    req = api.capture_request()
+    req.port_name = 'p1'
+    with open('tests/data/pcap/capture_example.pcap', 'wb') as f:
+        f.write(api.get_capture(req).getvalue())
+
+
 
     assert captures_ok(api, cfg), 'Capture validation failed!'
 
@@ -236,31 +176,4 @@ def wait_for(func, timeout=10, interval=0.2):
 
 
 if __name__ == '__main__':
-    hello_snappi_trex()
-
-```
-</details>
-
-<br>
-
-### Output
-
-If everything is working correctly, you should see a similar output as this.
-```
-Pushing traffic configuration ...
-Starting packet capture on all configured ports ...
-Starting transmit on all configured flows ...
-Checking metrics on all configured ports ...
-Expected        Total Tx        Total Rx
-2000            19              17
-2000            445             437
-2000            881             881
-2000            1325            1325
-2000            1761            1761
-2000           2000            2000
-Checking captured packets on all configured ports ...
-Port Name       Expected        UDP packets
-p1              1000            1000
-p2              1000            1000
-Test passed !
-```
+    hello_snappi()

@@ -1,0 +1,303 @@
+[
+    {
+        "test": [
+            {
+                "choice": "ethernet",
+                "ethernet": {
+                    "src": {
+                        "choice": "increment", 
+                        "increment": {"start": "00:11:22:33:44:55", "step": "10:A1:4F:6E:9A:CB", "count": 4}
+                    }
+                }
+            }
+        ],
+        "res": [
+            {
+                "name": "Ethernet0_src:0",
+                "size": 8,
+                "op": "inc",
+                "step": 18285008427723,
+                "min_value": 73588229205,
+                "max_value": 73213621940097,
+                "init_value": 73588229205,
+                "value_list": null
+            },
+            {
+                "fv_name": "Ethernet0_src:0",
+                "offset_fixup": 0,
+                "pkt_offset": "Ethernet:0.src",
+                "pkt_cast_size": 4,
+                "mask": 4294901760,
+                "shift": 16,
+                "add_value": 0,
+                "is_big": true
+            },
+            {
+               "fv_name": "Ethernet0_src:0",
+               "offset_fixup": 2,
+               "pkt_offset": "Ethernet:0.src",
+               "pkt_cast_size": 1,
+               "mask": 255,
+               "shift": -24,
+               "add_value": 0,
+               "is_big": false
+            },
+            {
+               "fv_name": "Ethernet0_src:0",
+               "offset_fixup": 3,
+               "pkt_offset": "Ethernet:0.src",
+               "pkt_cast_size": 1,
+               "mask": 255,
+               "shift": -16,
+               "add_value": 0,
+               "is_big": false
+            },
+            {
+               "fv_name": "Ethernet0_src:0",
+               "offset_fixup": 4,
+               "pkt_offset": "Ethernet:0.src",
+               "pkt_cast_size": 1,
+               "mask": 255,
+               "shift": -8,
+               "add_value": 0,
+               "is_big": false
+            },
+            {
+               "fv_name": "Ethernet0_src:0",
+               "offset_fixup": 5,
+               "pkt_offset": "Ethernet:0.src",
+               "pkt_cast_size": 1,
+               "mask": 255,
+               "shift": 0,
+               "add_value": 0,
+               "is_big": false
+            }
+        ]
+    },
+
+    {
+        "test": [
+            {
+                "choice": "ethernet",
+                "ethernet": {
+                    "src": {
+                        "choice": "decrement", 
+                        "decrement": {"start": "11:EE:DD:CC:BB:AA", "step": "10:A1:4F:6E:9A:CB", "count": 10}
+                    }
+                }
+            }
+        ],
+        "res": [
+            {
+                "name": "Ethernet0_src:0",
+                "size": 8,
+                "op": "dec",
+                "step": 18285008427723,
+                "min_value": 18446299466269634492,
+                "max_value": 18446482316353911722,
+                "init_value": 18446482316353911722,
+                "value_list": null
+            },
+            {
+                "fv_name": "Ethernet0_src:0",
+                "offset_fixup": 0,
+                "pkt_offset": "Ethernet:0.src",
+                "pkt_cast_size": 4,
+                "mask": 4294901760,
+                "shift": 16,
+                "add_value": 0,
+                "is_big": true
+            },
+            {
+               "fv_name": "Ethernet0_src:0",
+               "offset_fixup": 2,
+               "pkt_offset": "Ethernet:0.src",
+               "pkt_cast_size": 1,
+               "mask": 255,
+               "shift": -24,
+               "add_value": 0,
+               "is_big": false
+            },
+            {
+               "fv_name": "Ethernet0_src:0",
+               "offset_fixup": 3,
+               "pkt_offset": "Ethernet:0.src",
+               "pkt_cast_size": 1,
+               "mask": 255,
+               "shift": -16,
+               "add_value": 0,
+               "is_big": false
+            },
+            {
+               "fv_name": "Ethernet0_src:0",
+               "offset_fixup": 4,
+               "pkt_offset": "Ethernet:0.src",
+               "pkt_cast_size": 1,
+               "mask": 255,
+               "shift": -8,
+               "add_value": 0,
+               "is_big": false
+            },
+            {
+               "fv_name": "Ethernet0_src:0",
+               "offset_fixup": 5,
+               "pkt_offset": "Ethernet:0.src",
+               "pkt_cast_size": 1,
+               "mask": 255,
+               "shift": 0,
+               "add_value": 0,
+               "is_big": false
+            }
+        ]
+    },
+    {
+        "test": [
+            {
+                "choice": "ethernet",
+                "ethernet": {
+                    "src": {
+                        "choice": "values", 
+                        "values": ["AA:BB:CC:DD:EE:FF", "10:20:30:40:50:60", 37603585123959]
+                    }
+                }
+            }
+        ],
+        "res": [
+            {
+                "name": "Ethernet0_src:0",
+                "size": 8,
+                "op": "inc",
+                "step": 1,
+                "min_value": null,
+                "max_value": null,
+                "init_value": null,
+                "value_list": [187723572702975, 17730434519136, 37603585123959]
+            },
+            {
+                "fv_name": "Ethernet0_src:0",
+                "offset_fixup": 0,
+                "pkt_offset": "Ethernet:0.src",
+                "pkt_cast_size": 4,
+                "mask": 4294901760,
+                "shift": 16,
+                "add_value": 0,
+                "is_big": true
+            },
+            {
+               "fv_name": "Ethernet0_src:0",
+               "offset_fixup": 2,
+               "pkt_offset": "Ethernet:0.src",
+               "pkt_cast_size": 1,
+               "mask": 255,
+               "shift": -24,
+               "add_value": 0,
+               "is_big": false
+            },
+            {
+               "fv_name": "Ethernet0_src:0",
+               "offset_fixup": 3,
+               "pkt_offset": "Ethernet:0.src",
+               "pkt_cast_size": 1,
+               "mask": 255,
+               "shift": -16,
+               "add_value": 0,
+               "is_big": false
+            },
+            {
+               "fv_name": "Ethernet0_src:0",
+               "offset_fixup": 4,
+               "pkt_offset": "Ethernet:0.src",
+               "pkt_cast_size": 1,
+               "mask": 255,
+               "shift": -8,
+               "add_value": 0,
+               "is_big": false
+            },
+            {
+               "fv_name": "Ethernet0_src:0",
+               "offset_fixup": 5,
+               "pkt_offset": "Ethernet:0.src",
+               "pkt_cast_size": 1,
+               "mask": 255,
+               "shift": 0,
+               "add_value": 0,
+               "is_big": false
+            }
+        ]
+    },
+    {
+        "test": [
+            {
+                "choice": "ethernet",
+                "ethernet": {
+                    "src": {
+                        "choice": "value", 
+                        "value": 20015998343868
+                    }
+                }
+            }
+        ],
+        "res": [
+            {
+                "name": "Ethernet0_src:0",
+                "size": 8,
+                "op": "inc",
+                "step": 1,
+                "min_value": 20015998343868,
+                "max_value": 20015998343868,
+                "init_value": 20015998343868,
+                "value_list": null
+            },
+            {
+                "fv_name": "Ethernet0_src:0",
+                "offset_fixup": 0,
+                "pkt_offset": "Ethernet:0.src",
+                "pkt_cast_size": 4,
+                "mask": 4294901760,
+                "shift": 16,
+                "add_value": 0,
+                "is_big": true
+            },
+            {
+               "fv_name": "Ethernet0_src:0",
+               "offset_fixup": 2,
+               "pkt_offset": "Ethernet:0.src",
+               "pkt_cast_size": 1,
+               "mask": 255,
+               "shift": -24,
+               "add_value": 0,
+               "is_big": false
+            },
+            {
+               "fv_name": "Ethernet0_src:0",
+               "offset_fixup": 3,
+               "pkt_offset": "Ethernet:0.src",
+               "pkt_cast_size": 1,
+               "mask": 255,
+               "shift": -16,
+               "add_value": 0,
+               "is_big": false
+            },
+            {
+               "fv_name": "Ethernet0_src:0",
+               "offset_fixup": 4,
+               "pkt_offset": "Ethernet:0.src",
+               "pkt_cast_size": 1,
+               "mask": 255,
+               "shift": -8,
+               "add_value": 0,
+               "is_big": false
+            },
+            {
+               "fv_name": "Ethernet0_src:0",
+               "offset_fixup": 5,
+               "pkt_offset": "Ethernet:0.src",
+               "pkt_cast_size": 1,
+               "mask": 255,
+               "shift": 0,
+               "add_value": 0,
+               "is_big": false
+            }
+        ]
+    }
+]

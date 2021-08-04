@@ -1,0 +1,47 @@
+[
+    {
+        "choice": "pps",
+        "pps": 19.4,
+        "bps": 10923.52,
+        "kbps": 123.34,
+        "mbps": 0.9823,
+        "gbps": 0.0032,
+        "percentage": 23.41
+    },
+    {
+        "choice": "bps",
+        "pps": 19.4,
+        "bps": 10923.52,
+        "kbps": 123.34,
+        "mbps": 0.9823,
+        "gbps": 0.0032,
+        "percentage": 23.41
+    },
+    {
+        "choice": "kbps",
+        "pps": 19.4,
+        "bps": 10923.52,
+        "kbps": 123.34,
+        "mbps": 0.9823,
+        "gbps": 0.0032,
+        "percentage": 23.41
+    },
+    {
+        "choice": "mbps",
+        "pps": 19.4,
+        "bps": 10923.52,
+        "kbps": 123.34,
+        "mbps": 0.9823,
+        "gbps": 0.0032,
+        "percentage": 23.41
+    },
+    {
+        "choice": "gbps",
+        "pps": 19.4,
+        "bps": 10923.52,
+        "kbps": 123.34,
+        "mbps": 0.9823,
+        "gbps": 0.0032,
+        "percentage": 23.41
+    }
+]

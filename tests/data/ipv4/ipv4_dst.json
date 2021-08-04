@@ -1,0 +1,197 @@
+[
+    {
+        "test": [
+            {
+                "choice": "ethernet",
+                "ethernet": {}
+            },
+            {
+                "choice": "ipv4",
+                "ipv4": {
+                    "dst": {
+                        "choice": "increment",
+                        "increment": {"start": "192.168.0.1", "step": "0.0.1.2", "count": 300}
+                    }
+                }
+            }
+        ],
+        "res": [
+            {
+                "name":"IP0_dst:0",
+                "size": 4,
+                "op":"inc",
+                "step": 258,
+                "min_value": 0,
+                "max_value": 77400,
+                "init_value": 0,
+                "value_list": null
+            },
+            {
+                "fv_name":"IP0_dst:0",
+                "offset_fixup": 0,
+                "pkt_offset":"IP:0.dst",
+                "pkt_cast_size": 4,
+                "mask": 4294967295,
+                "shift": 0,
+                "add_value": -1062731775,
+                "is_big": true
+            }
+        ]
+    },
+    {
+        "test": [
+            {
+                "choice": "ethernet",
+                "ethernet": {}
+            },
+            {
+                "choice": "ipv4",
+                "ipv4": {
+                    "dst": {
+                        "choice": "decrement",
+                        "decrement": {"start": "192.168.0.1", "step": "1.0.1.2", "count": 200}
+                    }
+                }
+            }
+        ],
+        "res": [
+            {
+                "name":"IP0_dst:0",
+                "size": 4,
+                "op":"dec",
+                "step": 16777474,
+                "min_value": 939472495,
+                "max_value": 4294967295,
+                "init_value": 4294967295,
+                "value_list": null
+            },
+            {
+                "fv_name":"IP0_dst:0",
+                "offset_fixup": 0,
+                "pkt_offset":"IP:0.dst",
+                "pkt_cast_size": 4,
+                "mask": 4294967295,
+                "shift": 0,
+                "add_value": -1062731774,
+                "is_big": true
+            }
+        ]
+    },
+    {
+        "test": [
+            {
+                "choice": "ethernet",
+                "ethernet": {}
+            },
+            {
+                "choice": "ipv4",
+                "ipv4": {
+                    "dst": {
+                        "choice": "values",
+                        "values": [453143, "192.168.0.4", "10.0.0.1", "48.24.0.1"]
+                    }
+                }
+            }
+        ],
+        "res": [
+            {
+                "name":"IP0_dst:0",
+                "size": 4,
+                "op":"inc",
+                "step": 1,
+                "min_value": null,
+                "max_value": null,
+                "init_value": null,
+                "value_list": [453143, 3232235524, 167772161, 806879233]
+            },
+            {
+                "fv_name":"IP0_dst:0",
+                "offset_fixup": 0,
+                "pkt_offset":"IP:0.dst",
+                "pkt_cast_size": 4,
+                "mask": 4294967295,
+                "shift": 0,
+                "add_value": 0,
+                "is_big": true
+            }
+        ]
+    },
+    {
+        "test": [
+            {
+                "choice": "ethernet",
+                "ethernet": {}
+            },
+            {
+                "choice": "ipv4",
+                "ipv4": {
+                    "dst": {
+                        "choice": "decrement",
+                        "decrement": {"start": "192.168.0.1", "step": "1.0.1.2", "count": 200}
+                    }
+                }
+            }
+        ],
+        "res": [
+            {
+                "name":"IP0_dst:0",
+                "size": 4,
+                "op":"dec",
+                "step": 16777474,
+                "min_value": 939472495,
+                "max_value": 4294967295,
+                "init_value": 4294967295,
+                "value_list": null
+            },
+            {
+                "fv_name":"IP0_dst:0",
+                "offset_fixup": 0,
+                "pkt_offset":"IP:0.dst",
+                "pkt_cast_size": 4,
+                "mask": 4294967295,
+                "shift": 0,
+                "add_value": -1062731774,
+                "is_big": true
+            }
+        ]
+    },
+    {
+        "test": [
+            {
+                "choice": "ethernet",
+                "ethernet": {}
+            },
+            {
+                "choice": "ipv4",
+                "ipv4": {
+                    "dst": {
+                        "choice": "value",
+                        "value": "16.0.0.1"
+                    }
+                }
+            }
+        ],
+        "res": [
+            {
+                "name":"IP0_dst:0",
+                "size": 4,
+                "op":"inc",
+                "step": 1,
+                "min_value": 268435457,
+                "max_value": 268435457,
+                "init_value": 268435457,
+                "value_list": null
+            },
+            {
+                "fv_name":"IP0_dst:0",
+                "offset_fixup": 0,
+                "pkt_offset":"IP:0.dst",
+                "pkt_cast_size": 4,
+                "mask": 4294967295,
+                "shift": 0,
+                "add_value": 0,
+                "is_big": true
+            }
+        ]
+    }
+]

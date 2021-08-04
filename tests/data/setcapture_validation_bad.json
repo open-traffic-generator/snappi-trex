@@ -1,0 +1,14 @@
+[
+    {
+        "port_names": null,
+        "state": "invalid str"
+    },
+    {
+        "port_names": ["p1", "invalid str"],
+        "state": "start"
+    },
+    {
+        "port_names": ["p1", "p2", "p3", "p4", "invalid str"],
+        "state": "start"
+    }
+]

@@ -1,0 +1,97 @@
+[
+    {
+        "test": {
+            "choice": "fixed",
+            "fixed": 256,
+            "increment": {"start":1024, "step": 1, "end": 2048},
+            "random": {"min": 1024, "max": 2048}
+        },
+        "res": {
+            "len_cmds": 0,
+            "len_pad": 214,
+            "vm_cmds": []
+        }
+    },
+    {
+        "test": {
+            "choice": "increment",
+            "fixed": 256,
+            "increment": {"start":1024, "step": 1, "end": 2048},
+            "random": {"min": 1024, "max": 2048}
+        },
+        "res": {
+            "len_cmds": 4,
+            "len_pad": 2006,
+            "vm_cmds": [
+                {
+                    "name": "pkt_len",
+                    "size": 2,
+                    "op": "inc",
+                    "step": 1,
+                    "min_value": 1024,
+                    "max_value": 2048,
+                    "init_value": 1024,
+                    "value_list": null
+                },
+                {
+                    "fv_name": "pkt_len"
+                },
+                {
+                    "fv_name": "pkt_len",
+                    "offset_fixup": 0,
+                    "pkt_offset": "IP:0.len",
+                    "add_val": -14,
+                    "is_big": true
+                }, 
+                {
+                    "fv_name": "pkt_len",
+                    "offset_fixup": 0,
+                    "pkt_offset": "UDP:0.len",
+                    "add_val": -34,
+                    "is_big": true
+                }
+            ]
+        }
+    },
+    {
+        "test": {
+            "choice": "random",
+            "fixed": 256,
+            "increment": {"start":1024, "step": 1, "end": 2048},
+            "random": {"min": 1024, "max": 2048}
+        },
+        "res": {
+            "len_cmds": 4,
+            "len_pad": 2006,
+            "vm_cmds": [
+                {
+                    "name": "pkt_len",
+                    "size": 2,
+                    "op": "random",
+                    "step": 1,
+                    "min_value": 1024,
+                    "max_value": 2048,
+                    "init_value": 1024,
+                    "value_list": null
+                },
+                {
+                    "fv_name": "pkt_len"
+                },
+                {
+                    "fv_name": "pkt_len",
+                    "offset_fixup": 0,
+                    "pkt_offset": "IP:0.len",
+                    "add_val": -14,
+                    "is_big": true
+                }, 
+                {
+                    "fv_name": "pkt_len",
+                    "offset_fixup": 0,
+                    "pkt_offset": "UDP:0.len",
+                    "add_val": -34,
+                    "is_big": true
+                }
+            ]
+        }
+    }
+]

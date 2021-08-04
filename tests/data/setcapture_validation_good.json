@@ -1,0 +1,42 @@
+[
+    {
+        "port_names": null,
+        "state": "start"
+    },
+    {
+        "port_names": null,
+        "state": "stop"
+    },
+    {
+        "port_names": ["p1", "p3"],
+        "state": "start"
+    },
+    {
+        "port_names": ["p1", "p3"],
+        "state": "stop"
+    },
+    {
+        "port_names": ["p1"],
+        "state": "start"
+    },
+    {
+        "port_names": ["p1"],
+        "state": "stop"
+    },
+    {
+        "port_names": ["p1", "p3", "p4"],
+        "state": "start"
+    },
+    {
+        "port_names": ["p1", "p3", "p4"],
+        "state": "stop"
+    },
+    {
+        "port_names": ["p1", "p3", "p4", "p2"],
+        "state": "start"
+    },
+    {
+        "port_names": ["p1", "p3", "p4", "p2"],
+        "state": "stop"
+    }
+]

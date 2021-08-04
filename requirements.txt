@@ -1,0 +1,6 @@
+pip
+setuptools
+wheel
+twine
+python-dotenv
+snappi==0.4.21

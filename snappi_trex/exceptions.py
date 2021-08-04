@@ -1,0 +1,3 @@
+class SnappiTrexException(Exception):
+
+    pass

@@ -1,0 +1,20 @@
+[
+    {
+        "choice": "fixed",
+        "fixed": 256,
+        "increment": {"start":1024, "step": 1, "end": 2048},
+        "random": {"min": 1024, "max": 2048}
+    },
+    {
+        "choice": "increment",
+        "fixed": 256,
+        "increment": {"start":1024, "step": 1, "end": 2048},
+        "random": {"min": 1024, "max": 2048}
+    },
+    {
+        "choice": "random",
+        "fixed": 256,
+        "increment": {"start":1024, "step": 1, "end": 2048},
+        "random": {"min": 1024, "max": 2048}
+    }
+]

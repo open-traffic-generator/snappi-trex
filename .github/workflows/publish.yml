@@ -76,7 +76,7 @@ jobs:
       run: echo ${{steps.file_changes.outputs.modified}}
 
     - name: Create Release
-#      if: true == contains(steps.file_changes.outputs.modified, 'VERSION')
+      if: true == contains(steps.file_changes.outputs.modified, 'VERSION')
       id: create_release
       uses: actions/create-release@v1
       env:
@@ -88,7 +88,7 @@ jobs:
         prerelease: false
 
     - name: Upload Assets To Release
-#      if: true == contains(steps.file_changes.outputs.modified, 'VERSION')
+      if: true == contains(steps.file_changes.outputs.modified, 'VERSION')
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}

@@ -1,4 +1,13 @@
 # snappi-trex
+
+[![license](https://img.shields.io/badge/license-MIT-green.svg)](https://en.wikipedia.org/wiki/MIT_License)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![Build](https://github.com/open-traffic-generator/snappi-trex/workflows/Build/badge.svg)](https://github.com/open-traffic-generator/snappi-trex/actions)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/open-traffic-generator/snappi-trex.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/open-traffic-generator/snappi-trex/alerts/)
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/open-traffic-generator/snappi-trex.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/open-traffic-generator/snappi-trex/context:python)
+[![pypi](https://img.shields.io/pypi/v/snappi-trex.svg)](https://pypi.org/project/snappi-trex)
+[![python](https://img.shields.io/pypi/pyversions/snappi-trex.svg)](https://pypi.python.org/pypi/snappi-trex)
+
 snappi-trex is a snappi plugin that allows executing scripts written using 
 [snappi](https://github.com/open-traffic-generator/snappi) with Cisco's [TRex Traffic Generator](https://trex-tgn.cisco.com)
 

@@ -7,7 +7,7 @@ class Validation(object):
     invalid inputs that it detects.
     """
 
-
+    @staticmethod
     def validate_import():
         error = None
         try:
@@ -18,6 +18,7 @@ class Validation(object):
             raise SnappiTrexException('Failed to import TRex STL API. Please check that the correct system path was added. See usage.md for details.')
 
 
+    @staticmethod
     def validate_connection(c):
         error = None
         try:
@@ -31,6 +32,7 @@ class Validation(object):
             raise SnappiTrexException('Could not connect to T-Rex server. Please verify connection info.')
 
     
+    @staticmethod
     def validate_host(host):
         parse_host = host.split(':')
         if len(parse_host) > 2:
@@ -39,6 +41,7 @@ class Validation(object):
             raise SnappiTrexException('\'{}\' is an invalid hostname'.format(host))
 
 
+    @staticmethod
     def validate_rate(rate):
         """
         """
@@ -69,6 +72,7 @@ class Validation(object):
             if not isinstance(percent, float) and not isinstance(percent, int):
                 raise SnappiTrexException('\'percentage\' must be integer or float')
 
+    @staticmethod
     def validate_duration(duration):
         """
         """
@@ -99,9 +103,12 @@ class Validation(object):
             raise SnappiTrexException('Invalid \'duration\' choice')
 
     
+    @staticmethod
     def validate_packet(packet_headers):
         from snappi_trex.info import Info
         header_info = Info.get_header_info()
+        if packet_headers is None:
+            raise SnappiTrexException('Flow packet cannot be empty')
         for header in packet_headers:
 
             header_name = header['choice']
@@ -138,6 +145,7 @@ class Validation(object):
                 )
 
 
+    @staticmethod
     def validate_size(f_size):
         if f_size['choice'] == 'increment':
             start = f_size['increment']['start']
@@ -167,6 +175,7 @@ class Validation(object):
             raise SnappiTrexException('Invalid packet \'size\' choice')
 
 
+    @staticmethod
     def validate_value_option(header_field, layer_type, length):
         if header_field['choice'] == 'value':
             Validation.validate_address(header_field['value'], layer_type, length)
@@ -181,6 +190,7 @@ class Validation(object):
             raise SnappiTrexException('Invalid field value choice')
 
     
+    @staticmethod
     def validate_increment(field_inc, layer_type, length, dir):
         Validation.validate_address(field_inc['start'], layer_type, length)
         Validation.validate_address(field_inc['step'], layer_type, length)
@@ -196,6 +206,7 @@ class Validation(object):
             raise SnappiTrexException('step*count is too high. Overflow is not support for 8 byte fields')
 
     
+    @staticmethod
     def validate_address(addr, layer_type, length):
         error = False
         try:
@@ -210,6 +221,7 @@ class Validation(object):
             raise SnappiTrexException('{0} is not a valid {1} address'.format(addr, layer_type))
 
 
+    @staticmethod
     def validate_transmit(payload, config):
         if config is None:
             return
@@ -225,6 +237,7 @@ class Validation(object):
             raise SnappiTrexException('{} is not a valid transmit state'.format(payload.state))
 
 
+    @staticmethod
     def validate_capture(payload, port_ids):
         if payload.port_names is not None:
             for p_name in payload.port_names:
@@ -234,12 +247,14 @@ class Validation(object):
             raise SnappiTrexException('{} is not a valid capture state'.format(payload.state))
 
 
+    @staticmethod
     def validate_capture_request(request, port_ids):
         p_name = request.port_name
         if p_name not in port_ids:
             raise SnappiTrexException('{} is an unrecognized port name'.format(p_name))
 
 
+    @staticmethod
     def validate_link(payload, port_ids):
         if payload.port_names is not None:
             for p_name in payload.port_names:
@@ -249,6 +264,7 @@ class Validation(object):
             raise SnappiTrexException('{} is not a valid link state'.format(payload.state))
 
 
+    @staticmethod
     def validate_metrics_request(request, port_ids):
         if request.choice is not None and request.choice != 'port':
             raise SnappiTrexException('\'{}\' is not a supported metrics choice'.format(request.choice))
@@ -266,8 +282,11 @@ class Validation(object):
                     raise SnappiTrexException('\'{}\' is not a supported metrics column'.format(col))
 
 
+    @staticmethod
     def validate_capture_settings(settings, port_ids):
         from snappi_trex.info import Info
+        if settings is None:
+            return
         for s in settings:
             for p_name in s['port_names']:
                 if p_name not in port_ids:

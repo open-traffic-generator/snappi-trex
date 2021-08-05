@@ -2,6 +2,8 @@ class Util:
     """
     This class contains miscellaneous utility functions
     """
+
+    @staticmethod
     def get_mask(bits):
         """
         returns a mask of 1's of size bits
@@ -10,6 +12,7 @@ class Util:
         return result
 
     
+    @staticmethod
     def uint_to_int(uint, size):
         """
         converts an unsigned int of size n to a signed int of size n
@@ -20,6 +23,7 @@ class Util:
         return result
 
 
+    @staticmethod
     def convert_to_long(value, layer_type):
         """
         Parses address values into a long int
@@ -71,11 +75,13 @@ class Util:
         return value
 
     
+    @staticmethod
     def long_to_MAC(value):
         return ':'.join(['{}{}'.format(a,b)
             for a, b in zip(*[iter('{:012x}'.format(value))] * 2)
         ])
 
 
+    @staticmethod
     def list_not_empty(key, obj):
         return key in obj and obj[key] is not None and len(obj[key]) > 0

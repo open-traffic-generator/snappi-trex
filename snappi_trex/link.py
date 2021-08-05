@@ -1,5 +1,3 @@
-import json
-
 class Link(object):
 
     def __init__(self, trexclient):

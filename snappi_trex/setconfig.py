@@ -5,6 +5,7 @@ from snappi_trex.validation import Validation
 
 class SetConfig:
 
+    @staticmethod
     def set_rate(rate):
         """
         Returns packets per second, bits per second, and percent values.
@@ -29,6 +30,7 @@ class SetConfig:
         return pps, bps, percent
 
     
+    @staticmethod
     def set_duration(duration, pps, bps, percent):
         """
         Returns a STLTXMode object with correct rate and duration configurations
@@ -66,6 +68,7 @@ class SetConfig:
         return mode
 
     
+    @staticmethod
     def set_packet_headers(packet_headers):
         """
         Returns list of VM instructions to correctly configure each packet header
@@ -131,6 +134,7 @@ class SetConfig:
         return vm_cmds, pkt_headers, layers
 
 
+    @staticmethod
     def set_packet_size(f_size, pkt_base, layers):
         """
         Returns a list of VM instructions to configure the correct size option. Also 
@@ -187,8 +191,12 @@ class SetConfig:
         return vm_cmds, pad
 
 
+    @staticmethod
     def fix_checksum(layers):
         vm_cmds = []
+
+        if layers is None:
+            return vm_cmds
 
         # Fix all IP and checksums
         layers_with_cs = {'IP': 0, 'UDP': 0, 'TCP': 0, 'IPv6': 0}

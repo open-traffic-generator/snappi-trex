@@ -14,7 +14,7 @@ import snappi
 def hello_snappi():
     # create a new API instance where host points to controller
     # api = snappi_trex.snappi_api.Api() # Use local copy of snappi_trex
-    api = snappi.api(ext='trex', host='localhost:4501') # Use installed package of snappi_trex
+    api = snappi.api(ext='trex') # Use installed package of snappi_trex
     
     # and an empty traffic configuration to be pushed to controller later on
     cfg = api.config()

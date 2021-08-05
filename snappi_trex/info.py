@@ -4,6 +4,8 @@ class Info:
     """This class contains Python dictionaries that have useful information
     for carrying out processes
     """
+
+    @staticmethod
     def get_header_info():
         """In order to add support for new packet headers, just add all of
         the necessary header info into this dictionary.
@@ -168,6 +170,7 @@ class Info:
             # }
         }
 
+    @staticmethod
     def get_metrics_columns():
         return {
             "frames_tx": "opackets",
@@ -180,6 +183,7 @@ class Info:
             "bytes_rx_rate": "rx_bps"
         }
 
+    @staticmethod
     def get_capture_filter_info():
         return {
             "ethernet": {

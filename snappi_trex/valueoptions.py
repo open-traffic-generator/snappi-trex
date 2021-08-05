@@ -9,6 +9,7 @@ class ValueOptions:
     This class also contains useful utility functions for configuration
     """
 
+    @staticmethod
     def get_value_cmds(layer_type, layer_cnt, header_field, length, field_str, bit_fixup=0):
         """
         Returns the set of VM instructions to configure a specific header field
@@ -97,6 +98,7 @@ class ValueOptions:
         return vm_cmds
 
 
+    @staticmethod
     def get_big_value_cmds(layer_type, layer_cnt, header_field, length, field_str, fixup):
         """
         Same as get_value_cmds (see above). Handles fields of size 33-64 inclusive
@@ -171,6 +173,7 @@ class ValueOptions:
         return vm_cmds
 
 
+    @staticmethod
     def get_big_big_value_cmds(layer_type, layer_cnt, header_field, length, field_str, fixup):
         """
         Handles fields of length greater than 8 bytes
@@ -217,6 +220,7 @@ class ValueOptions:
 
 
 
+    @staticmethod
     def inc_values(start, step, count, length):
         """
         Returns the min, max, initial, and add value for a given start, step, 
@@ -251,6 +255,7 @@ class ValueOptions:
         return (min, max, init, add_val)
 
 
+    @staticmethod
     def inc_values_big(start, step, count, length):
         """
         Returns the min, max, initial, and add value for a given start, step, count, 

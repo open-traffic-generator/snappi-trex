@@ -59,7 +59,7 @@ jobs:
     
     - name: Test whl distribution installation
       run: |
-        pip install --upgrade dist/snappi_trex-${{ steps.get_version.outputs.version }}-py2.py3-none-any.whl[dev]
+        pip install --upgrade dist/snappi_trex-${{ steps.get_version.outputs.version }}-py3-none-any.whl[dev]
 
     - name: Run tests
       run: |

@@ -44,7 +44,7 @@ with open(os.path.join(base_dir, 'VERSION')) as fid:
 setup(
     name=pkg_name,
     version=version_number,
-    description='The T-Rex Open Traffic Generator Python Package',
+    description='The TRex Open Traffic Generator Python Package',
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/open-traffic-generator',
@@ -58,7 +58,7 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3'
     ],
-    keywords='t-rex testing open traffic generator automation',
+    keywords='TRex testing open traffic generator automation',
     packages=[pkg_name],
     include_package_data=True,
     python_requires='>=3, <4',

@@ -101,6 +101,10 @@ class SetConfig:
             # Now configure the header fields
             for field in header[header_name]:
 
+                # Skip the choice field
+                if field == 'choice':
+                    continue
+
                 # Edge case for all icmp echo header fields
                 if (header_name == 'icmp' or header_name == 'icmpv6') and field == 'echo':
                     for icmp_field in header[header_name][field]:

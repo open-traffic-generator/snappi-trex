@@ -119,6 +119,9 @@ class Validation(object):
 
             for field in header[header_name]:
 
+                if field == 'choice':
+                    continue
+
                 if (header_name == 'icmp' or header_name == 'icmpv6') and field == 'echo':
                     for icmp_field in header[header_name][field]:
                         field_info = header_info[header_name][icmp_field]

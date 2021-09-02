@@ -39,6 +39,7 @@
           "name": "cp",
           "filters": [
             {
+              "choice": "ethernet",
               "ethernet": {
                 "src": {
                   "value": "110000110000",
@@ -248,6 +249,7 @@
           "name": "cp",
           "filters": [
             {
+              "choice": "ethernet",
               "ethernet": {
                 "src": {
                   "value": "110000110000",
@@ -457,6 +459,7 @@
           "name": "cp",
           "filters": [
             {
+              "choice": "ethernet",
               "ethernet": {
                 "src": {
                   "value": "110000110000",
@@ -671,6 +674,7 @@
           "name": "cp",
           "filters": [
             {
+              "choice": "ethernet",
               "ethernet": {
                 "src": {
                   "value": "110000110000",
@@ -885,6 +889,7 @@
           "name": "cp",
           "filters": [
             {
+              "choice": "ethernet",
               "ethernet": {
                 "src": {
                   "value": "110000110000",
@@ -896,7 +901,10 @@
                   "mask": "00",
                   "negate": true
                 }
-              },
+              }
+            },
+            {
+              "choice": "ipv4",
               "ipv4": {
                 "src": {
                   "value": "0a000001",
@@ -1106,6 +1114,7 @@
           "name": "cp",
           "filters": [
             {
+              "choice": "ethernet",
               "ethernet": {
                 "src": {
                   "value": "110000110000",
@@ -1117,7 +1126,10 @@
                   "mask": "00",
                   "negate": true
                 }
-              },
+              }
+            },
+            {
+              "choice": "ipv4",
               "ipv4": {
                 "src": {
                   "value": "0a000001",
@@ -1333,6 +1345,7 @@
           "name": "cp",
           "filters": [
             {
+              "choice": "ethernet",
               "ethernet": {
                 "src": {
                   "value": "110000110000",
@@ -1344,7 +1357,10 @@
                   "mask": "00",
                   "negate": true
                 }
-              },
+              }
+            },
+            {
+              "choice": "ipv4",
               "ipv4": {
                 "src": {
                   "value": "aba1683f",
@@ -1560,6 +1576,7 @@
           "name": "cp",
           "filters": [
             {
+              "choice": "ethernet",
               "ethernet": {
                 "src": {
                   "value": "110000110000",
@@ -1571,7 +1588,10 @@
                   "mask": "00",
                   "negate": true
                 }
-              },
+              }
+            },
+            {
+              "choice": "ipv4",
               "ipv4": {
                 "src": {
                   "value": "aba1683f",

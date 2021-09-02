@@ -3,4 +3,4 @@ setuptools
 wheel
 twine
 python-dotenv
-snappi==0.5.1
+snappi==0.4.38

@@ -1,7 +1,7 @@
 [<< snappi-trex TOC](../README.md#Table-of-Contents)
 
 # Features
-This document is a full list of supported and unsupported snappi features and the limitations. Keep in mind that this document does not describe the function of each feature, but only describes what is supported, unsupported, and the limitations of these features. For the full description of each snappi feature, read the Open Traffic Generator API [Documentation](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/master/artifacts/openapi.yaml)
+This document is a full list of supported and unsupported snappi features and the limitations. Keep in mind that this document does not describe the function of each feature, but only describes what is supported, unsupported, and the limitations of these features. For the full description of each snappi feature, read the Open Traffic Generator API [Documentation](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/master/artifacts/openapi.yaml). snappi-trex is compatible with snappi v0.4.38 and Open Traffic Generator v0.4.15. snappi-trex currently is not compatible with Open Traffic Generator v0.5 and snappi v0.5
 * <font color="RED">UNSUPPORTED</font>: Feature is not supported in snappi-trex
 * <font color="GREEN">FULLY SUPPORTED</font>: Feature is fully supported in snappi-trex without additional limitations
 * <font color="GREEN">SUPPORTED</font>: Feature is supported in snappi-trex with limitations or some unsupported subfeatures

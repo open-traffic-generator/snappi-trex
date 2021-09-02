@@ -9,7 +9,9 @@
 [![python](https://img.shields.io/pypi/pyversions/snappi-trex.svg)](https://pypi.python.org/pypi/snappi-trex)
 
 snappi-trex is a snappi plugin that allows executing scripts written using 
-[snappi](https://github.com/open-traffic-generator/snappi) with Cisco's [TRex Traffic Generator](https://trex-tgn.cisco.com)
+[snappi](https://github.com/open-traffic-generator/snappi) with Cisco's [TRex Traffic Generator](https://trex-tgn.cisco.com).
+
+snappi-trex is currently compatible with snappi v0.4.38 and Open Traffic Generator v0.4.15. (Does not currently support v0.5)
 
 ## Design
 snappi-trex converts snappi Open Traffic Generator API configuration into the equivalent TRex STL Client configuration. This allows users to use the TRex Traffic Generator and its useful features without having to write complex TRex scripts. 
@@ -66,7 +68,7 @@ sudo apt-get install python3-pip
 ```
 Install snappi and the snappi-trex extension
 ```sh
-pip3 install snappi==0.4.26 snappi[trex]
+pip3 install snappi==0.4.38 snappi[trex]
 ```
 
 ## Start Scripting

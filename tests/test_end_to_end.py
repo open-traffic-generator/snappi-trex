@@ -86,6 +86,10 @@ def run_tests(tests):
         req.port_name = 'p2'
         cap = api.get_capture(req)
 
+        req = api.metrics_request()
+        req.port.port_names = ['p1', 'p2']
+        met = api.get_metrics(req)
+
         with open(test['res'], 'rb') as res:
             res_bytes = b''
             pcap = dpkt.pcap.Reader(res)

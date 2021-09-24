@@ -28,7 +28,7 @@ Note: you can also do custom system paths, as long as they point to a valid vers
 import snappi
 import sys, os
 
-trex_path = 'opt/trex/v2.90/automation/trex_control_plane/interactive'
+trex_path = '/opt/trex/v2.90/automation/trex_control_plane/interactive'
 sys.path.insert(0, os.path.abspath(trex_path))
 ```
 

@@ -68,7 +68,7 @@ sudo apt-get install python3-pip
 ```
 Install snappi and the snappi-trex extension
 ```sh
-pip3 install snappi==0.4.38 snappi[trex]
+pip3 install snappi==0.6.1 snappi[trex]
 ```
 
 ## Start Scripting

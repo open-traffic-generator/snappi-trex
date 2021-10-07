@@ -6,11 +6,12 @@
 ## 1. Use ext='trex'
 In the python script, declare snappi-trex api using
 ```
-api = snappi.api(ext='trex')
+api = snappi.api(ext='trex', location='localhost:4501')
 ```
+Note: location follows format '{IP_ADDRESS}:{PORT}'. Default TRex port is 4501.
 
 ## 2. TRex must be installed
-TRex must be installed, and all snappi-trex Python scripts must have TRex's path added to the system path. To do this, scripts must start with the following imports.
+TRex must be installed, and all snappi-trex Python scripts must have TRex's path added to the system path. To do this, scripts must start with the following imports. (MAKE SURE /opt/trex CONTAINS ONLY THE TREX DIRECTORY)
 
 ```
 import snappi

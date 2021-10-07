@@ -19,7 +19,7 @@ def hello_snappi_trex():
     - Validate that captured UDP packets on both the ports are as expected.
     """
     # create a new API instance where host points to controller
-    api = snappi.api(ext='trex')
+    api = snappi.api(ext='trex', location='localhost:4501')
     # and an empty traffic configuration to be pushed to controller later on
     cfg = api.config()
 

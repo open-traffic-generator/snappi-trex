@@ -11,7 +11,7 @@
 snappi-trex is a snappi plugin that allows executing scripts written using 
 [snappi](https://github.com/open-traffic-generator/snappi) with Cisco's [TRex Traffic Generator](https://trex-tgn.cisco.com).
 
-snappi-trex is currently compatible with snappi v0.6.1 and Open Traffic Generator v0.6.1
+snappi-trex is currently compatible with snappi v0.6.4 and Open Traffic Generator v0.6.4
 
 ## Design
 snappi-trex converts snappi Open Traffic Generator API configuration into the equivalent TRex STL Client configuration. This allows users to use the TRex Traffic Generator and its useful features without having to write complex TRex scripts. 

@@ -62,14 +62,14 @@ class Validation(object):
             raise SnappiTrexException('Invalid \'rate\' choice')
 
         if pps is not None:
-            if not isinstance(pps, float) and not isinstance(pps, int):
+            if not isinstance(pps, str) and not isinstance(pps, int):
                 print(isinstance(pps, float))
                 raise SnappiTrexException('\'pps\' must be integer or float')
         if bps is not None:
-            if not isinstance(bps, float) and not isinstance(bps, int):
+            if not isinstance(bps, str) and not isinstance(bps, int):
                 raise SnappiTrexException('\'(k/m/g)bps\' must be integer or float')
         if percent is not None:
-            if not isinstance(percent, float) and not isinstance(percent, int):
+            if not isinstance(percent, str) and not isinstance(percent, int):
                 raise SnappiTrexException('\'percentage\' must be integer or float')
 
     @staticmethod
@@ -299,8 +299,8 @@ class Validation(object):
                 raise SnappiTrexException('\'{}\' is not a supported capture format'.format(s['format']))
             if 'packet_size' in s and s['packet_size'] is not None:
                 raise SnappiTrexException('maximum capture packet size options are not supported')
-            if s['overwrite']:
-                raise SnappiTrexException('overwrite not supported for captures')
+            # if not s['overwrite']:
+            #     raise SnappiTrexException('overwrite not supported for captures')
 
             capture_filter_info = Info.get_capture_filter_info()
             if 'filters' in s:

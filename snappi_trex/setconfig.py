@@ -27,6 +27,12 @@ class SetConfig:
             bps = rate['gbps'] * 1000000000
         elif rate['choice'] == 'percentage':
             percent = rate['percentage']
+        if pps:
+            pps = int(pps)
+        if bps:
+            bps = int(bps)
+        if percent:
+            percent = int(percent)
         return pps, bps, percent
 
     

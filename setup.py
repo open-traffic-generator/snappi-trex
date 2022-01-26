@@ -4,8 +4,8 @@ To build `python setup.py sdist --formats=gztar bdist_wheel --universal`
 """
 import os
 from setuptools import setup
-import requests
-import json
+# import requests
+# import json
 
 
 # RELEASES_URL = (
